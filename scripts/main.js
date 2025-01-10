@@ -50,12 +50,7 @@ const solving = val1 => {
 	}
 
 	// step 2 - iterate each number (for example: A) and delete number what is divide to A. Loop working while val1 sqrt will not be less than A
-	for (let i = 0; i < allNumbers.length; i++) {
-		// if val1 sqrt number is not bigger than
-		if (allNumbers[i] >= Math.sqrt(val1)) {
-			break;
-		}
-
+	for (let i = 0; allNumbers[i] < Math.sqrt(val1); i++) {
 		const divide = allNumbers.filter(num => num % allNumbers[i] == 0 && num > allNumbers[i]); // get array with removed numbers what is divided to A
 		// iterate each removed number
 		for (let x = 0; x < divide.length; x++) {
@@ -105,6 +100,8 @@ const solving = val1 => {
 	// }
 
 	result = allNumbers;
+
+	result += `\n\n${val1} is ${allNumbers.includes(val1) ? 'a' : 'not a'} prime number`;
 
 	return result; // send solving result
 };
